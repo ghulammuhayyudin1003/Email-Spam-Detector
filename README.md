@@ -51,7 +51,7 @@ Email-Spam-Detector/
 ├── evaluator.py        ← Metrics and evaluation reports
 └── ocr_extractor.py    ← Image OCR for multimodal spam
 
----
+
 
 ## ⚙️ How to Run Locally
 
@@ -87,7 +87,7 @@ Open `http://localhost:8501` in your browser.
 
 ## 🌐 Deployment
 
-Deployed on **Streamlit Community Cloud** (free).
+Will be deployed on **Streamlit Community Cloud** (free).
 - `requirements.txt` → auto pip installs all Python packages
 - `packages.txt` → auto installs `tesseract-ocr` system binary
 
@@ -98,7 +98,7 @@ Deployed on **Streamlit Community Cloud** (free).
 This project is the practical implementation of the paper's key findings:
 
 - **Why Random Forest?** Ensemble of 300 trees with `min_samples_leaf=2` produces the lowest variance across folds (std=0.0058), confirming the paper's robustness analysis.
-- **Why Logistic Regression CV?** Built-in cross-validated regularisation search eliminates manual hyperparameter tuning while achieving peak accuracy.
+- **Why Logistic Regression CV?** Built-in cross-validated regularisation eliminates manual hyperparameter tuning. Strong alternative to Random Forest with 97.84% accuracy.
 - **Why TF-IDF over word embeddings?** The paper confirmed TF-IDF achieves near-identical accuracy to more complex representations on this domain, with far lower inference cost.
 
 ---
