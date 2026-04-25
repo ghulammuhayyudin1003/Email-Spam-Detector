@@ -259,9 +259,9 @@ def main() -> None:
 
     # Header
    st.title("📧 Email Spam Detector")
-st.caption("By **Ghulam Muhayyudin** "
+st.caption("By **Ghulam Muhayyudin** · EJASET 2025 · "
            "[![GitHub](https://img.shields.io/badge/GitHub-Repo-black?logo=github)]"
-           "(https://github.com/ghulammuhayyudin1003/Email-Spam-Detector)"
+           "(https://github.com/ghulammuhayyudin1003/Email-Spam-Detector)")
     )
     st.divider()
 
