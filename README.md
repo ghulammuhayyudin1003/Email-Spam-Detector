@@ -10,7 +10,8 @@ Built by **Ghulam Muhayyudin** — Computer Science Undergraduate Researcher
 ---
 
 ## 🚀 Live Demo
-> Coming soon on Streamlit Cloud
+## 🚀 Live Demo
+👉 **[https://email-spam-detector-1003.streamlit.app](https://email-spam-detector-1003.streamlit.app)**
 
 ---
 
@@ -37,6 +38,8 @@ This system classifies emails as **spam** or **ham (legitimate)** using:
 ---
 
 ## 🗂️ Project Structure
+
+```
 Email-Spam-Detector/
 ├── app.py                  ← Streamlit web application
 ├── train.py                ← Model training script
@@ -46,10 +49,11 @@ Email-Spam-Detector/
 │   └── dataset.csv         ← Email dataset (spam/ham)
 ├── models/                 ← Saved model files (generated after training)
 └── src/
-├── preprocessor.py     ← Text cleaning pipeline
-├── trainer.py          ← Model definitions and persistence
-├── evaluator.py        ← Metrics and evaluation reports
-└── ocr_extractor.py    ← Image OCR for multimodal spam
+    ├── preprocessor.py     ← Text cleaning pipeline
+    ├── trainer.py          ← Model definitions and persistence
+    ├── evaluator.py        ← Metrics and evaluation reports
+    └── ocr_extractor.py    ← Image OCR for multimodal spam
+```
 
 
 
@@ -75,7 +79,6 @@ pip install -r requirements.txt
 ```bash
 python train.py
 ```
-Expected output: accuracy ~98%, full classification report, confusion matrix
 
 ### 5. Launch the web app
 ```bash
@@ -87,9 +90,13 @@ Open `http://localhost:8501` in your browser.
 
 ## 🌐 Deployment
 
-Will be deployed on **Streamlit Community Cloud** (free).
+✅ **Live on Streamlit Community Cloud (free)**
+🔗 https://email-spam-detector-1003.streamlit.app
+
 - `requirements.txt` → auto pip installs all Python packages
 - `packages.txt` → auto installs `tesseract-ocr` system binary
+- Dataset auto-downloads on first launch (UCI SMS Spam Collection)
+- Models auto-train on first launch (~2-3 minutes)
 
 ---
 
