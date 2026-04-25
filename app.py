@@ -16,42 +16,28 @@ from src.trainer import RF_MODEL_PATH, LR_MODEL_PATH, load_pipeline
 # ── Auto-setup: download dataset + train if models don't exist ────────────────
 
 def auto_train_if_needed():
-    """
-    On Streamlit Cloud, model .pkl files don't exist on first launch
-    (they are excluded from GitHub). This function:
-      1. Downloads the SMS Spam dataset automatically (free, public, ~500KB)
-      2. Runs train.py to fit and save both models
-      3. Only runs once — skipped if models already exist
-    """
     if RF_MODEL_PATH.exists() and LR_MODEL_PATH.exists():
-        return   # models already trained — nothing to do
+        return
 
     import subprocess
     import urllib.request
     import zipfile
-    from pathlib import Path
+    import csv
+    import io
 
-    # ── Step A: Download dataset ──────────────────────────────────────────────
     data_dir = PROJECT_ROOT / "data"
     data_dir.mkdir(exist_ok=True)
     dataset_path = data_dir / "dataset.csv"
 
     if not dataset_path.exists():
         st.info("⏳ First launch: downloading dataset (~500KB)...")
-
-        # UCI SMS Spam Collection — public domain, no login required
         url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip"
-
         zip_path = data_dir / "spam.zip"
         urllib.request.urlretrieve(url, zip_path)
 
-        # Extract and convert to label,text CSV format
         with zipfile.ZipFile(zip_path, "r") as z:
             raw = z.read("SMSSpamCollection").decode("utf-8")
 
-        # Convert tab-separated format → label,text CSV
-        import csv
-        import io
         lines = raw.strip().split("\n")
         output = io.StringIO()
         writer = csv.writer(output)
@@ -62,20 +48,18 @@ def auto_train_if_needed():
                 writer.writerow([parts[0].strip(), parts[1].strip()])
 
         dataset_path.write_text(output.getvalue(), encoding="utf-8")
-        zip_path.unlink()   # clean up zip file
-        st.info("✅ Dataset downloaded (5,572 emails).")
+        zip_path.unlink()
+        st.info("✅ Dataset downloaded.")
 
-    # ── Step B: Train models ──────────────────────────────────────────────────
     st.info("⏳ Training models... this takes 2–3 minutes on first launch.")
-
     progress_bar = st.progress(0, text="Starting training...")
 
- result = subprocess.run(
-    [sys.executable, "train.py", "--no-cv"],  # sys.executable = correct Python
-    capture_output=True,
-    text=True,
-    cwd=str(PROJECT_ROOT),
-)
+    result = subprocess.run(
+        [sys.executable, "train.py", "--no-cv"],
+        capture_output=True,
+        text=True,
+        cwd=str(PROJECT_ROOT),
+    )
 
     progress_bar.progress(100, text="Training complete!")
 
@@ -83,11 +67,10 @@ def auto_train_if_needed():
         st.error(f"Training failed:\n{result.stderr}")
         st.stop()
     else:
-        st.success("✅ Models trained successfully! Reloading app...")
+        st.success("✅ Models trained! Reloading...")
         st.rerun()
 
 
-# Call it immediately — runs only on first launch
 auto_train_if_needed()
 
 # ── Page configuration ────────────────────────────────────────────────────────
