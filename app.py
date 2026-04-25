@@ -258,15 +258,10 @@ The cleaned text was then:
 def main() -> None:
 
     # Header
-    st.title("📧 Email Spam Detector")
-    st.markdown(
-        """
-        **Research-backed** spam detection using TF-IDF features with
-        **Random Forest** and **Logistic Regression CV** — the two most
-        stable models from the paper
-        *"Machine Learning-Based Email Spam Detection: Accuracy, Overfitting
-        and Robustness Analysis"* (EJASET, 2025).
-        """
+   st.title("📧 Email Spam Detector")
+st.caption("By **Ghulam Muhayyudin** "
+           "[![GitHub](https://img.shields.io/badge/GitHub-Repo-black?logo=github)]"
+           "(https://github.com/ghulammuhayyudin1003/Email-Spam-Detector)"
     )
     st.divider()
 
