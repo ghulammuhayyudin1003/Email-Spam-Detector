@@ -1,12 +1,5 @@
 """
 app.py — Email Spam Detector (Streamlit Web App)
-
-FIXES applied in this version:
-  1. st.set_page_config() MUST be the very first Streamlit call.
-     Previously auto_train_if_needed() was calling st.info() before
-     set_page_config() which caused a crash.
-  2. Indentation error fixed on the `else:` block (was 3 spaces, needs 4).
-  3. auto_train_if_needed() is now called AFTER set_page_config().
 """
 
 import sys
@@ -75,7 +68,7 @@ def auto_train_if_needed():
       4. Only executes when models are missing — skipped on all future visits
     """
     if RF_MODEL_PATH.exists() and LR_MODEL_PATH.exists():
-        return   # models already exist — skip everything
+        return
 
     import subprocess
     import urllib.request
@@ -83,7 +76,6 @@ def auto_train_if_needed():
     import csv
     import io
 
-    # ── Download dataset ──────────────────────────────────────────────────────
     data_dir = PROJECT_ROOT / "data"
     data_dir.mkdir(exist_ok=True)
     dataset_path = data_dir / "dataset.csv"
@@ -111,7 +103,6 @@ def auto_train_if_needed():
         zip_path.unlink()
         st.info("✅ Dataset downloaded (5,572 emails).")
 
-    # ── Train models ──────────────────────────────────────────────────────────
     st.info("⏳ Training models... this takes 2–3 minutes on first launch.")
     progress_bar = st.progress(0, text="Starting training...")
 
@@ -137,17 +128,14 @@ def auto_train_if_needed():
 auto_train_if_needed()
 
 
-# ── Model loading (cached per session) ───────────────────────────────────────
+# ── Model loading (cached per session) ────────────────────────────────────────
 
 @st.cache_resource(show_spinner="Loading models…")
 def load_models() -> dict:
-    """
-    Load both trained pipelines from disk.
-    Cached by Streamlit so models load only once per session.
-    """
+    """Load both trained pipelines from disk."""
     models = {}
     for name, path in [
-        ("🌲 Random Forest (Most Stable)",           RF_MODEL_PATH),
+        ("🌲 Random Forest (Most Stable)",            RF_MODEL_PATH),
         ("📐 Logistic Regression CV (Best Accuracy)", LR_MODEL_PATH),
     ]:
         models[name] = load_pipeline(path) if path.exists() else None
@@ -157,9 +145,7 @@ def load_models() -> dict:
 # ── Prediction helpers ────────────────────────────────────────────────────────
 
 def predict(pipeline, text: str) -> tuple:
-    """
-    Run inference and return (label, spam_probability, ham_probability).
-    """
+    """Run inference and return (label, spam_probability, ham_probability)."""
     proba   = pipeline.predict_proba([text])[0]
     classes = list(pipeline.classes_)
 
@@ -257,15 +243,16 @@ The cleaned text was then:
 
 def main() -> None:
 
-    # Header
-   st.title("📧 Email Spam Detector")
-st.caption("By **Ghulam Muhayyudin** · EJASET 2025 · "
-           "[![GitHub](https://img.shields.io/badge/GitHub-Repo-black?logo=github)]"
-           "(https://github.com/ghulammuhayyudin1003/Email-Spam-Detector)")
+    # ── Header ────────────────────────────────────────────────────────────────
+    st.title("📧 Email Spam Detector")
+    st.caption(
+        "By **Ghulam Muhayyudin** · EJASET 2025 · "
+        "[![GitHub](https://img.shields.io/badge/GitHub-Repo-black?logo=github)]"
+        "(https://github.com/ghulammuhayyudin1003/Email-Spam-Detector)"
     )
     st.divider()
 
-    # Load models
+    # ── Load models ───────────────────────────────────────────────────────────
     all_models       = load_models()
     available_models = {k: v for k, v in all_models.items() if v is not None}
 
@@ -278,7 +265,7 @@ st.caption("By **Ghulam Muhayyudin** · EJASET 2025 · "
         st.code("python train.py", language="bash")
         return
 
-    # Sidebar
+    # ── Sidebar ───────────────────────────────────────────────────────────────
     with st.sidebar:
         st.header("⚙️ Settings")
 
@@ -306,15 +293,24 @@ st.caption("By **Ghulam Muhayyudin** · EJASET 2025 · "
             )
 
         st.divider()
+        st.subheader("ℹ️ Dataset Info")
+        st.markdown("""
+- **Total emails:** 5,572
+- **Split:** 70% train / 30% test
+- **CV:** 5-fold stratified
+- **Source:** UCI SMS Spam Collection
+        """)
+
+        st.divider()
         st.caption("Retrain anytime: `python train.py`")
 
-    # Active pipeline
+    # ── Active pipeline ───────────────────────────────────────────────────────
     pipeline = available_models[chosen_model_name]
 
-    # Tabs
+    # ── Tabs ──────────────────────────────────────────────────────────────────
     tab_text, tab_image = st.tabs(["✉️ Text Email", "🖼️ Image Attachment (OCR)"])
 
-    # Tab 1: Text email
+    # ── Tab 1: Text email ─────────────────────────────────────────────────────
     with tab_text:
         st.subheader("Paste or type the email content")
         email_text = st.text_area(
@@ -347,7 +343,7 @@ st.caption("By **Ghulam Muhayyudin** · EJASET 2025 · "
                         chosen_model_name,
                     )
 
-    # Tab 2: Image OCR
+    # ── Tab 2: Image OCR ──────────────────────────────────────────────────────
     with tab_image:
         st.subheader("Upload an image email attachment")
         st.markdown(
@@ -405,6 +401,14 @@ st.caption("By **Ghulam Muhayyudin** · EJASET 2025 · "
                             ocr_text, ocr_text,
                             chosen_model_name,
                         )
+
+    # ── Footer ────────────────────────────────────────────────────────────────
+    st.divider()
+    st.caption(
+        "📄 Based on: *Machine Learning-Based Email Spam Detection: "
+        "Accuracy, Overfitting and Robustness Analysis* — EJASET 2025 · "
+        "Built by Ghulam Muhayyudin"
+    )
 
 
 if __name__ == "__main__":
