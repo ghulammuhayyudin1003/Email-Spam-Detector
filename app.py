@@ -246,9 +246,12 @@ def main() -> None:
     # ── Header ────────────────────────────────────────────────────────────────
     st.title("📧 Email Spam Detector")
     st.caption(
-        "By **Ghulam Muhayyudin** · EJASET 2025 · "
-        "[![GitHub](https://img.shields.io/badge/GitHub-Repo-black?logo=github)]"
-        "(https://github.com/ghulammuhayyudin1003/Email-Spam-Detector)"
+        "By **Ghulam Muhayyu Din** · EJASET 2025 &nbsp;|&nbsp; "
+        "[![GitHub](https://img.shields.io/badge/GitHub-black?logo=github)](https://github.com/ghulammuhayyudin1003/Email-Spam-Detector) "
+        "[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ghulam-muhayyu-din/) "
+        "[![ORCID](https://img.shields.io/badge/ORCID-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0006-9382-9791) "
+        "[![Scholar](https://img.shields.io/badge/Google_Scholar-4285F4?logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=2H5SwVkAAAAJ)"
+
     )
     st.divider()
 
