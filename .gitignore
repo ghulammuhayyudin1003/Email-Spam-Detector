@@ -1,0 +1,6 @@
+# Create this file: spam_detector/.gitignore
+.venv/
+__pycache__/
+*.pyc
+models/*.pkl
+.idea/
