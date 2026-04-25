@@ -70,12 +70,12 @@ def auto_train_if_needed():
 
     progress_bar = st.progress(0, text="Starting training...")
 
-    result = subprocess.run(
-        ["python", "train.py", "--no-cv"],
-        capture_output=True,
-        text=True,
-        cwd=str(PROJECT_ROOT),
-    )
+ result = subprocess.run(
+    [sys.executable, "train.py", "--no-cv"],  # sys.executable = correct Python
+    capture_output=True,
+    text=True,
+    cwd=str(PROJECT_ROOT),
+)
 
     progress_bar.progress(100, text="Training complete!")
 
