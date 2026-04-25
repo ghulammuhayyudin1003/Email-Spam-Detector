@@ -10,7 +10,6 @@ Built by **Ghulam Muhayyudin** — Computer Science Undergraduate Researcher
 ---
 
 ## 🚀 Live Demo
-## 🚀 Live Demo
 👉 **[https://email-spam-detector-1003.streamlit.app](https://email-spam-detector-1003.streamlit.app)**
 
 ---
