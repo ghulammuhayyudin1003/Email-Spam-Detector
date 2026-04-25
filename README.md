@@ -125,6 +125,7 @@ This project is the practical implementation of the paper's key findings:
 
 ## 👤 Author
 
-**Ghulam Muhayyudin**
+**Ghulam Muhayyu Din**
 Computer Science Undergraduate
 GitHub: [@ghulammuhayyudin1003](https://github.com/ghulammuhayyudin1003)
+Google Scholar: (https://scholar.google.com/citations?user=2H5SwVkAAAAJ&hl=en&authuser=2&oi=ao)
