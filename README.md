@@ -5,7 +5,7 @@ A production-ready spam detection web application extending the research paper:
 > *"Machine Learning-Based Email Spam Detection: Accuracy, Overfitting and Robustness Analysis"*
 > Published in EJASET, Volume 3, Issue 6, 2025
 > 👉 **[https://doi.org/10.59324/ejaset.2025.3(6).06](https://doi.org/10.59324/ejaset.2025.3(6).06)**
-Built by **Ghulam Muhayyudin** — Computer Science Undergraduate Researcher
+> Built by **Ghulam Muhayyudin** — Computer Science Undergraduate Researcher
 
 ---
 
@@ -45,7 +45,7 @@ Email-Spam-Detector/
 ├── requirements.txt        ← Python dependencies
 ├── packages.txt            ← System packages (Tesseract OCR)
 ├── data/
-│   └── dataset.csv         ← Email dataset (spam/ham)   |  Read the Datset note below to download dataset.
+│   └── dataset.csv         ← Email dataset (spam/ham)   |  Read the Dataset note below to download Full dataset.
 ├── models/                 ← Saved model files (generated after training)
 └── src/
     ├── preprocessor.py     ← Text cleaning pipeline
@@ -66,7 +66,7 @@ Email-Spam-Detector/
 | 📦 Full Dataset | Large-scale | Original research dataset | For full replication of paper results |
 
 **⬇️ Download Full Dataset:**
-👉 [Click here to download the complete dataset]()
+👉 [Click here to download the complete dataset](https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing)
 ```
 
 
