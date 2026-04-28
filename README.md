@@ -66,7 +66,7 @@ Email-Spam-Detector/
 | 📦 Full Dataset | Large-scale | Original research dataset | For full replication of paper results |
 
 **⬇️ Download Full Dataset:**
-👉 [Click here to download the complete dataset](https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing)
+👉 👉 **[https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing] (https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing)**
 ```
 
 
