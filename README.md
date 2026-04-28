@@ -68,10 +68,8 @@ Email-Spam-Detector/
 
 **⬇️ Download Full Dataset:**
 
-👉 **[Click here to download the complete dataset](https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing)**
+👉 **[https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing](https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing)**
 
-> The app automatically downloads the UCI version on first launch —
-> no manual setup required for standard use.
 
 
 ```
