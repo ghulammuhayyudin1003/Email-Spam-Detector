@@ -53,7 +53,6 @@ Email-Spam-Detector/
     ├── evaluator.py        ← Metrics and evaluation reports
     └── ocr_extractor.py    ← Image OCR for multimodal spam
 
----
 
 ## 📁 Dataset
 
@@ -64,14 +63,17 @@ Email-Spam-Detector/
 
 | Version | Samples | Source | Usage |
 |---|---|---|---|
-| ✅ GitHub (included) | 5,572 emails | UCI SMS Spam Collection | Auto-downloaded on first app launch |
-| 📦 Full Dataset | Large-scale | Original research dataset | For full replication of paper results |
+| ✅ **GitHub (included)** | **5,572 emails** | UCI SMS Spam Collection | Auto-downloaded on first app launch |
+| 📦 **Full Dataset** | **Large-scale** | Original research dataset | For full replication of paper results |
 
 **⬇️ Download Full Dataset:**
-> 👉 **[Click here to download the complete dataset](https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing)**
+
+👉 **[Click here to download the complete dataset](https://drive.google.com/file/d/1THnJXB7qnWkphDIc9z0L2TgMGX240XY1/view?usp=sharing)**
+
+> The app automatically downloads the UCI version on first launch —
+> no manual setup required for standard use.
 
 
----
 ```
 
 
